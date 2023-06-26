@@ -1,0 +1,36 @@
+.task-card{
+    width: 300px;
+    margin: 10px 0;
+    height: 300px;
+    border-radius: 5px;
+    border: 1px #aaaaaa solid;
+    padding: 30px
+}
+
+.tasks{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.comment-card{
+    background: #aaaaaa;
+    width: 360px;
+    margin: 10px 0;
+}
+
+.comments{
+    width: 800px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.task-big{
+    width: 1000px;
+    margin: 20px auto;
+    border: 1px #aaaaaa solid;
+    border-radius: 5px;
+    padding: 40px;
+}
