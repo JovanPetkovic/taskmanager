@@ -1,10 +1,14 @@
 @props(['comment'])
-<form method="POST" class="comment-card" action="/comment">
+<form method="POST" class="comment-card" action="{{ route('comment.delete', ['id' => $comment->id]) }}">
     @csrf
+    @method('DELETE') <!-- Add the DELETE method spoofing -->
+
     <p><strong>{{ $comment->user->name }}</strong></p>
     <p>{{ $comment->content }}</p>
-    <div class="buttons">
-        <button type="submit" class="btn-delete">Delete</button>
-        <a href="/comment" class="btn-edit">Edit</a>
-    </div>
+    @if(auth()->id() == $comment->user->id)
+        <div class="buttons">
+            <button type="submit" class="btn-delete">Delete</button>
+            <a href="{{ route('comment.edit', ['id' => $comment->id]) }}" class="btn-edit">Edit</a>
+        </div>
+    @endif
 </form>

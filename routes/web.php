@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [TaskController::class, 'index']);
-Route::get('/task/{id}', [TaskController::class, 'show']);
+Route::get('/task/{id}', [TaskController::class, 'show'])->name('task.show');
 
 Route::get('/login', [UserController::class, 'showLogin']);
 Route::post('/login', [UserController::class, 'login']);
@@ -28,4 +28,10 @@ Route::get('/register', [UserController::class, 'showRegister']);
 Route::post('/register', [UserController::class, 'register']);
 
 Route::post('/comment', [CommentController::class, 'addComment']);
+Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comment.delete');
+Route::get('/comments/{id}/edit', [CommentController::class, 'editShow'])->name('comment.edit');
+Route::put('/comments/{id}', [CommentController::class, 'update'])->name('comment.update');
+
+
+
 
