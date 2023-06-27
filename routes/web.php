@@ -28,7 +28,7 @@ Route::get('/register', [UserController::class, 'showRegister']);
 Route::post('/register', [UserController::class, 'register']);
 
 Route::post('/comment', [CommentController::class, 'addComment']);
-Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comment.delete');
+Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comment.delete')->middleware('auth:sanctum');
 Route::get('/comments/{id}/edit', [CommentController::class, 'editShow'])->name('comment.edit');
 Route::put('/comments/{id}', [CommentController::class, 'update'])->name('comment.update');
 

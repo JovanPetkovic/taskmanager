@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
 class CommentController extends Controller
@@ -45,6 +46,23 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
+    public function deleteAPI(Request $request, $id)
+    {
+//        if (!$request->user()->can('delete-comment')) {
+//            return response()->json(['error' => 'Unauthorized.'], Response::HTTP_UNAUTHORIZED);
+//        }
+
+        $comment = Comment::find($id);
+
+        if (!$comment) {
+            return response()->json(['error' => 'Comment not found.'], Response::HTTP_NOT_FOUND);
+        }
+
+        $comment->delete();
+
+        return response()->json(['message' => 'Comment deleted successfully.'], Response::HTTP_OK);
+    }
+
     public function editShow($id)
     {
         $comment = Comment::findOrFail($id);
@@ -65,5 +83,21 @@ class CommentController extends Controller
 
         return redirect()->route('task.show', ['id' => strval($comment->task->id)]);
 
+    }
+
+    public function getCommentAPI($id){
+        $comment = Comment::find($id);
+        if(!$comment){
+            return response()->json([
+                'message' => 'Comment not found'
+            ]);
+        }
+        $content = $comment->content;
+        $userName = $comment->user->name;
+
+        return response()->json([
+            'content' => $content,
+            'username' => $userName,
+        ]);
     }
 }

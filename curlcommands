@@ -1,0 +1,7 @@
+1|yLkD4WnbHE9QCrmq05AKOKy1TQ1YLax3Ogj5uRff
+curl -X DELETE -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT" http://127.0.0.1:8000/api/comments/51
+curl -X GET \
+  http://127.0.0.1:8000/api/protected-route \
+  -H 'Authorization: AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT'
+curl -X GET http://127.0.0.1:8000/api/protected-route -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT"
+curl -X DELETE http://127.0.0.1:8000/api/comments/51 -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT"
