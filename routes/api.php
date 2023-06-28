@@ -20,8 +20,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/tasks', [TaskController::class, 'indexAPI']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::delete('/comments/{id}', [CommentController::class, 'deleteAPI'])->name('comment.delete');
-    Route::get('/comments/{id}', [CommentController::class, 'getCommentAPI'])->name('comment.get');
+    Route::delete('/comments/{id}', [CommentController::class, 'deleteAPI']);
+    Route::get('/comments/{id}', [CommentController::class, 'getAPI']);
+    Route::put('/comments/{id}', [CommentController::class, 'updateAPI']);
+    Route::post('/comments', [CommentController::class, 'addAPI']);
+
+    Route::delete('/tasks/{id}', [TaskController::class, 'deleteAPI']);
+    Route::post('/tasks', [TaskController::class, 'addAPI']);
     Route::get('/protected-route', [ApiController::class, 'protectedRoute']);
 
 });

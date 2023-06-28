@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -47,4 +48,20 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
+
+        if ($request->is('api/*')) {
+            return response()->json(['error' => 'Wrong API Key'], 401);
+        }
+
+        // Redirect or display HTML view for non-JSON requests
+
+        return redirect()->guest(route('login'));
+    }
+
 }

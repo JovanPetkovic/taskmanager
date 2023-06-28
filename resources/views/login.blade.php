@@ -13,5 +13,6 @@
         <div>
             <input type="submit" value="Login">
         </div>
+        <a href="/register">Register</a>
     </form>
 @endsection

@@ -15,8 +15,6 @@
             @csrf
             <button type="submit">Logout</button>
         </form>
-    @else
-        <a href="/login">Login</a>
     @endif
     @yield('content')
 

@@ -4,4 +4,16 @@ curl -X GET \
   http://127.0.0.1:8000/api/protected-route \
   -H 'Authorization: AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT'
 curl -X GET http://127.0.0.1:8000/api/protected-route -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT"
-curl -X DELETE http://127.0.0.1:8000/api/comments/51 -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT"
+
+
+DELETE COMMENT API REQUEST
+curl -X DELETE -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT" http://127.0.0.1:8000/api/comments/52
+
+GET COMMENT API REQUEST
+curl -X GET http://127.0.0.1:8000/api/comments/22 -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT"
+
+POST COMMENT API REQUEST
+curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT" -d '{"content": "This is a comment.", "task_id": 1}' http://127.0.0.1:8000/api/comments
+
+PUT COMMENT API REQUEST
+curl -X PUT -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT" -d '{"content": "bbbb comment."}' http://127.0.0.1:8000/api/comments/52

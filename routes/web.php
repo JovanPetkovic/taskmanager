@@ -18,19 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [TaskController::class, 'index']);
-Route::get('/task/{id}', [TaskController::class, 'show'])->name('task.show');
+Route::get('/task/{id}', [TaskController::class, 'show'])->name('task.show')->middleware('auth');
 
-Route::get('/login', [UserController::class, 'showLogin']);
+Route::get('/login', [UserController::class, 'showLogin'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/register', [UserController::class, 'showRegister']);
 Route::post('/register', [UserController::class, 'register']);
 
-Route::post('/comment', [CommentController::class, 'addComment']);
-Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comment.delete')->middleware('auth:sanctum');
-Route::get('/comments/{id}/edit', [CommentController::class, 'editShow'])->name('comment.edit');
-Route::put('/comments/{id}', [CommentController::class, 'update'])->name('comment.update');
+Route::post('/comment', [CommentController::class, 'addComment'])->middleware('auth');
+Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comment.delete')->middleware('auth');
+Route::get('/comments/{id}/edit', [CommentController::class, 'editShow'])->name('comment.edit')->middleware('auth');
+Route::put('/comments/{id}', [CommentController::class, 'update'])->name('comment.update')->middleware('auth');
 
 
 
