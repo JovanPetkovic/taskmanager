@@ -7,8 +7,8 @@
     <p>{{ $comment->content }}</p>
     @if(auth()->id() == $comment->user->id)
         <div class="buttons">
-            <button type="submit" class="btn-delete">Delete</button>
-            <a href="{{ route('comment.edit', ['id' => $comment->id]) }}" class="btn-edit">Edit</a>
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="{{ route('comment.edit', ['id' => $comment->id]) }}" class="btn btn-info">Edit</a>
         </div>
     @endif
 </form>

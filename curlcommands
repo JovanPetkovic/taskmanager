@@ -17,3 +17,9 @@ curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -
 
 PUT COMMENT API REQUEST
 curl -X PUT -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT" -d '{"content": "bbbb comment."}' http://127.0.0.1:8000/api/comments/52
+
+POST TASK API REQUEST
+curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT" -d '{"title": "This is a task created by API", "description": "This task is only made in order to demonstrate that it is possible to create a task using API"}' http://127.0.0.1:8000/api/tasks
+
+DELETE TASK API REQUEST
+curl -X DELETE -H "Accept: application/json" -H "Authorization: Bearer AVWC3XLRwBPD3nGKFTYNtGSHu1omoN2lSY6iDKLE4euR6fZtwO2s8uq4odlT" http://127.0.0.1:8000/api/tasks/21
